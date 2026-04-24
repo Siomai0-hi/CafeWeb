@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="mn" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CafeWeb</title>
+	<link rel="preconnect" href="https://images.unsplash.com">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header class="topbar">
+	<a class="brand" th:href="@{/}">CafeWeb</a>
+	<nav aria-label="Primary navigation">
+		<a href="#menu">Цэс</a>
+		<a href="#checkout">Захиалга</a>
+	</nav>
+</header>
+
+<main>
+	<section class="intro">
+		<div class="intro-copy">
+			<p class="eyebrow">Java backend дээр ажиллаж байна</p>
+			<h1>CafeWeb</h1>
+			<p>Кофе, амттан, өдрийн хоолоо web-ээс сонгоод Spring Boot backend руу илгээнэ.</p>
+		</div>
+		<div class="intro-stats" aria-label="Cafe status">
+			<div>
+				<strong th:text="${menuCount}">8</strong>
+				<span>цэс</span>
+			</div>
+			<div>
+				<strong>8-18</strong>
+				<span>минут</span>
+			</div>
+		</div>
+	</section>
+
+	<form class="workspace" id="orderForm" th:action="@{/orders}" method="post">
+		<section class="menu-column" id="menu" aria-labelledby="menuTitle">
+			<div class="section-head">
+				<div>
+					<p class="eyebrow">Өнөөдрийн сонголт</p>
+					<h2 id="menuTitle">Цэс</h2>
+				</div>
+				<span class="open-pill">Нээлттэй</span>
+			</div>
+
+			<div class="menu-section" th:each="categoryEntry : ${menuByCategory}">
+				<h3 th:text="${categoryEntry.key}">Coffee</h3>
+				<div class="menu-grid">
+					<article class="menu-card" th:each="item : ${categoryEntry.value}" th:data-price="${item.price}">
+						<div class="item-mark" th:style="'--accent:' + ${item.accentColor}">
+							<span th:text="${item.shortCode}">ES</span>
+						</div>
+						<div class="item-copy">
+							<div class="item-meta">
+								<span th:text="${item.tag}">Favorite</span>
+								<strong th:text="${item.formattedPrice()}">9,500 MNT</strong>
+							</div>
+							<h4 th:text="${item.name}">Vanilla Latte</h4>
+							<p th:text="${item.description}">Steamed milk, espresso, vanilla cream.</p>
+						</div>
+						<div class="stepper" th:attr="data-item=${item.id}">
+							<button type="button" class="step-button" data-step="-1" aria-label="Decrease quantity">-</button>
+							<input type="number"
+								   min="0"
+								   max="12"
+								   value="0"
+								   inputmode="numeric"
+								   th:name="'qty_' + ${item.id}"
+								   th:value="${form.get('qty_' + item.id) ?: 0}"
+								   th:aria-label="${item.name} + ' quantity'">
+							<button type="button" class="step-button" data-step="1" aria-label="Increase quantity">+</button>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<aside class="checkout-panel" id="checkout" aria-labelledby="checkoutTitle">
+			<div>
+				<p class="eyebrow">Checkout</p>
+				<h2 id="checkoutTitle">Захиалга</h2>
+			</div>
+
+			<p class="alert" th:if="${error}" th:text="${error}">Алдаа</p>
+
+			<label>
+				<span>Нэр</span>
+				<input type="text" name="customerName" autocomplete="name" required th:value="${form.get('customerName')}">
+			</label>
+
+			<label>
+				<span>Ширээ</span>
+				<input type="text" name="tableNumber" placeholder="A3" th:value="${form.get('tableNumber')}">
+			</label>
+
+			<label>
+				<span>Тэмдэглэл</span>
+				<textarea name="note" rows="3" th:text="${form.get('note')}"></textarea>
+			</label>
+
+			<div class="total-box">
+				<span>Нийт дүн</span>
+				<strong id="orderTotal">0 MNT</strong>
+			</div>
+
+			<button class="submit-button" type="submit">
+				<span>Захиалга илгээх</span>
+			</button>
+		</aside>
+	</form>
+</main>
+
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

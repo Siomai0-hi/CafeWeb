@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="mn" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title th:text="${order.id} + ' - CafeWeb'">CafeWeb Order</title>
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header class="topbar">
+	<a class="brand" th:href="@{/}">CafeWeb</a>
+	<nav aria-label="Primary navigation">
+		<a th:href="@{/}">Шинэ захиалга</a>
+	</nav>
+</header>
+
+<main class="receipt-page">
+	<section class="receipt">
+		<div class="receipt-title">
+			<p class="eyebrow">Захиалга баталгаажлаа</p>
+			<h1 th:text="${order.id}">CW-1001</h1>
+			<p>
+				<span th:text="${order.customerName}">Guest</span>
+				<span th:if="${!order.tableNumber.isBlank()}" th:text="' · Ширээ ' + ${order.tableNumber}"></span>
+			</p>
+		</div>
+
+		<div class="receipt-lines">
+			<div class="receipt-line" th:each="line : ${order.lines}">
+				<div>
+					<strong th:text="${line.item.name}">Vanilla Latte</strong>
+					<span th:text="${line.quantity} + ' ширхэг'">1 ширхэг</span>
+				</div>
+				<strong th:text="${line.formattedLineTotal()}">9,500 MNT</strong>
+			</div>
+		</div>
+
+		<div class="receipt-note" th:if="${!order.note.isBlank()}">
+			<span>Тэмдэглэл</span>
+			<p th:text="${order.note}">No sugar</p>
+		</div>
+
+		<div class="receipt-total">
+			<span>Нийт</span>
+			<strong th:text="${order.formattedTotal()}">9,500 MNT</strong>
+		</div>
+
+		<div class="receipt-meta">
+			<span th:text="${order.formattedCreatedAt()}">2026-04-24 12:00</span>
+			<span th:text="${order.waitMinutes} + ' минутын дараа бэлэн'">10 минутын дараа бэлэн</span>
+		</div>
+
+		<a class="submit-button link-button" th:href="@{/}">
+			<span>Дахин захиалах</span>
+		</a>
+	</section>
+</main>
+</body>
+</html>
