@@ -319,7 +319,8 @@ main {
 }
 
 .checkout-panel input,
-.checkout-panel textarea {
+.checkout-panel textarea,
+.checkout-panel select {
 	width: 100%;
 	border: 1px solid var(--line);
 	border-radius: 6px;
@@ -449,6 +450,17 @@ main {
 	margin-top: 24px;
 	font-size: 26px;
 	font-weight: 900;
+}
+
+.receipt-total.muted {
+	margin-top: 14px;
+	color: var(--muted);
+	font-size: 16px;
+	font-weight: 800;
+}
+
+.receipt-total.muted strong {
+	color: var(--ink);
 }
 
 .receipt-meta {

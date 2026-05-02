@@ -40,6 +40,21 @@
 			<p th:text="${order.note}">No sugar</p>
 		</div>
 
+		<div class="receipt-total muted">
+			<span>Төлбөрийн хэлбэр</span>
+			<strong th:text="${order.paymentMethod}">Cash</strong>
+		</div>
+
+		<div class="receipt-total muted">
+			<span>Дэд нийт</span>
+			<strong th:text="${order.formattedSubtotal()}">9,500 MNT</strong>
+		</div>
+
+		<div class="receipt-total muted" th:if="${order.hasDiscount()}">
+			<span th:text="${order.discountLabel}">Discount</span>
+			<strong th:text="'-' + ${order.formattedDiscountAmount()}">-0 MNT</strong>
+		</div>
+
 		<div class="receipt-total">
 			<span>Нийт</span>
 			<strong th:text="${order.formattedTotal()}">9,500 MNT</strong>

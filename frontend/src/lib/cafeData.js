@@ -1,124 +1,235 @@
-export const CATEGORY_CONFIG = {
-  coffee: {
-    label: "Coffee",
-    accent: "#2f6f73",
-    badge: "Fresh brew",
-    description: "Espresso drinks, iced coffee, and rich milk classics.",
-    image:
-      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80",
-    supportsIce: true,
-    sizePrices: { S: 0, M: 2000, L: 4000 },
-  },
-  tea: {
-    label: "Tea",
-    accent: "#9d4edd",
-    badge: "Calm cup",
-    description: "Green, milk, lemon, iced, and black tea for slower moments.",
-    image:
-      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=80",
-    supportsIce: true,
-    sizePrices: { S: 0, M: 1500, L: 3000 },
-  },
-  milkshake: {
-    label: "Milkshake",
-    accent: "#d86c47",
-    badge: "Creamy",
-    description: "Sweet blended shakes with chocolate, caramel, fruit, and Oreo.",
-    image:
-      "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=80",
-    supportsIce: true,
-    sizePrices: { S: 0, M: 2000, L: 4000 },
-  },
-  smoothie: {
-    label: "Smoothie",
-    accent: "#4a7c59",
-    badge: "Fruit blend",
-    description: "Bright fruit smoothies with mango, berries, and cranberry.",
-    image:
-      "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=900&q=80",
-    supportsIce: true,
-    sizePrices: { S: 0, M: 2000, L: 4000 },
-  },
-  dessert: {
-    label: "Dessert",
-    accent: "#e0a458",
-    badge: "Baked today",
-    description: "Cake slices, brownie, tiramisu, and warm croissants.",
-    image:
-      "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80",
-    supportsIce: false,
-    sizePrices: { S: 0, M: 1500, L: 3000 },
-  },
-  breakfast: {
-    label: "Breakfast",
-    accent: "#577590",
-    badge: "Morning plate",
-    description: "Sandwiches, pancakes, toast, omelette, and full breakfast plates.",
-    image:
-      "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80",
-    supportsIce: false,
-    sizePrices: { S: 0, M: 1500, L: 3000 },
-  },
-};
-
-export const DEFAULT_MENU = {
-  coffee: [
-    { id: "latte", name: "Latte", basePrice: 12000, description: "Soft milk foam with a smooth espresso base.", popular: true },
-    { id: "americano", name: "Americano", basePrice: 10000, description: "Clean espresso stretched with hot water." },
-    { id: "cappuccino", name: "Cappuccino", basePrice: 13000, description: "Balanced espresso, steamed milk, and thick foam.", popular: true },
-    { id: "espresso", name: "Espresso", basePrice: 8000, description: "Short, bold, and aromatic double shot." },
-    { id: "mocha", name: "Mocha", basePrice: 14000, description: "Chocolate, espresso, milk, and a mellow finish." },
-  ],
-  tea: [
-    { id: "green-tea", name: "Green Tea", basePrice: 5000, description: "Light, grassy, and refreshing." },
-    { id: "milk-tea", name: "Milk Tea", basePrice: 7000, description: "Creamy black tea with a gentle sweet note.", popular: true },
-    { id: "lemon-tea", name: "Lemon Tea", basePrice: 6500, description: "Bright citrus tea served warm or iced." },
-    { id: "ice-tea", name: "Ice Tea", basePrice: 6000, description: "Cold brewed tea with a clean finish." },
-    { id: "black-tea", name: "Black Tea", basePrice: 5000, description: "Classic strong tea with deep aroma." },
-  ],
-  milkshake: [
-    { id: "vanilla", name: "Vanilla", basePrice: 9000, description: "Creamy vanilla shake with a clean dairy finish." },
-    { id: "chocolate", name: "Chocolate", basePrice: 9500, description: "Deep cocoa blended with chilled milk.", popular: true },
-    { id: "strawberry-shake", name: "Strawberry", basePrice: 8700, description: "Sweet berry shake with a bright pink color." },
-    { id: "oreo", name: "Oreo", basePrice: 10000, description: "Cookies, cream, and a thick blended texture.", popular: true },
-    { id: "caramel", name: "Caramel", basePrice: 9500, description: "Smooth caramel shake with a buttery note." },
-  ],
-  smoothie: [
-    { id: "mango", name: "Mango", basePrice: 8000, description: "Sunny mango blend with a silky body.", popular: true },
-    { id: "strawberry-smoothie", name: "Strawberry", basePrice: 8500, description: "Fresh strawberry smoothie with light tartness." },
-    { id: "blueberry", name: "Blueberry", basePrice: 9000, description: "Blueberry blend with a mellow berry finish." },
-    { id: "cranberry", name: "Cranberry", basePrice: 9500, description: "Crisp cranberry smoothie with a bright edge." },
-    { id: "blackberry", name: "Blackberry", basePrice: 9000, description: "Dark berry blend with natural sweetness." },
-  ],
-  dessert: [
-    { id: "cheesecake", name: "Cheesecake", basePrice: 10000, description: "Creamy slice with a biscuit base.", popular: true },
-    { id: "brownie", name: "Brownie", basePrice: 9000, description: "Dense chocolate brownie with crisp edges." },
-    { id: "chocolate-cake", name: "Chocolate Cake", basePrice: 8500, description: "Layered chocolate cake with soft crumb." },
-    { id: "tiramisu", name: "Tiramisu", basePrice: 8700, description: "Coffee-soaked dessert with mascarpone cream." },
-    { id: "croissant", name: "Croissant", basePrice: 7000, description: "Flaky butter pastry, warmed before serving.", popular: true },
-  ],
-  breakfast: [
-    { id: "egg-sandwich", name: "Egg Sandwich", basePrice: 8000, description: "Warm egg sandwich with a soft toasted bun." },
-    { id: "english-breakfast", name: "English Breakfast", basePrice: 12000, description: "Full plate with eggs, toast, and sides.", popular: true },
-    { id: "pancake", name: "Pancake", basePrice: 9500, description: "Soft pancakes with a gentle sweet finish." },
-    { id: "avocado-toast", name: "Avocado Toast", basePrice: 11500, description: "Creamy avocado over crisp toast.", popular: true },
-    { id: "omelette", name: "Omelette", basePrice: 10000, description: "Folded eggs with a fluffy center." },
-  ],
-};
-
-export const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1800&q=80";
-
-export const PAYMENT_METHODS = ["Cash", "Card", "QPay", "SocialPay"];
-
-export function formatMoney(amount) {
-  return `${new Intl.NumberFormat("en-US").format(Math.round(amount))} MNT`;
+function unsplash(id, width = 1200) {
+  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=80`;
 }
 
-export function getUnitPrice(categoryKey, item, size, hasIce) {
+export const SCENE_IMAGES = {
+  login: unsplash("photo-1495474472287-4d71bcdd2085", 1800),
+  lounge: unsplash("photo-1442512595331-e89e73853f31", 1800),
+  counter: unsplash("photo-1501339847302-ac426a4a7cbb", 1400),
+};
+
+export const PLACEHOLDER_IMAGES = {
+  hot: "/images/menu/hot-drink.svg",
+  cold: "/images/menu/cold-drink.svg",
+  dessert: "/images/menu/dessert.svg",
+  breakfast: "/images/menu/breakfast.svg",
+};
+
+// Product images are intentionally centralized here so they can be replaced later
+// without touching the UI components.
+export const PRODUCT_IMAGES = {
+  espresso: unsplash("photo-1510707577719-ae7c14805e3a"),
+  latte: unsplash("photo-1509042239860-f550ce710b93"),
+  matcha: unsplash("photo-1536256263959-770b48d82b0a"),
+  tea: unsplash("photo-1544787219-7f47ccb76574"),
+  coldbrew: unsplash("photo-1461023058943-07fcbe16d735"),
+  smoothie: unsplash("photo-1505252585461-04db1eb84625"),
+  shake: unsplash("photo-1572490122747-3968b75cc699"),
+  icedTea: unsplash("photo-1556679343-c7306c1976bc"),
+  cheesecake: unsplash("photo-1533134242443-d4fd215305ad"),
+  croissant: unsplash("photo-1555507036-ab1f4038808a"),
+  tiramisu: unsplash("photo-1571877227200-a0d98ea607e9"),
+  brownie: unsplash("photo-1606313564200-e75d5e30476c"),
+  panini: unsplash("photo-1528736235302-52922df5c122"),
+  toast: unsplash("photo-1525351484163-7529414344d8"),
+  breakfast: unsplash("photo-1533089860892-a7c6f0a88666"),
+  sandwich: unsplash("photo-1481070555726-e2fe8357725c"),
+};
+
+export const MENU_CATEGORIES = [
+  {
+    id: "hot-drinks",
+    label: "Халуун ундаа",
+    description: "Эспрессо, сүүтэй кофе болон халуун цай.",
+    accent: "amber",
+    image: PRODUCT_IMAGES.latte,
+    items: [
+      {
+        id: "espresso",
+        name: "Эспрессо",
+        description: "Өтгөн амттай богино кофе.",
+        basePrice: 6500,
+        image: PRODUCT_IMAGES.espresso,
+        popular: true,
+      },
+      {
+        id: "vanilla-latte",
+        name: "Ваниль латте",
+        description: "Эспрессо, халуун сүү, ванилийн зөөлөн амт.",
+        basePrice: 9500,
+        image: PRODUCT_IMAGES.latte,
+        popular: true,
+      },
+      {
+        id: "matcha-cloud",
+        name: "Матча үүлэн",
+        description: "Матча болон зөөлөн сүүн хөөс.",
+        basePrice: 11000,
+        image: PRODUCT_IMAGES.matcha,
+      },
+      {
+        id: "berry-tea",
+        name: "Жимстэй цай",
+        description: "Жимс, зөгийн бал, нимбэгтэй халуун цай.",
+        basePrice: 8000,
+        image: PRODUCT_IMAGES.tea,
+      },
+    ],
+  },
+  {
+    id: "cold-drinks",
+    label: "Хүйтэн ундаа",
+    description: "Мөстэй кофе, смүүти, өтгөн шейк.",
+    accent: "cyan",
+    image: PRODUCT_IMAGES.coldbrew,
+    items: [
+      {
+        id: "cold-brew",
+        name: "Колд брю",
+        description: "Удаан хандалсан мөстэй кофе.",
+        basePrice: 10500,
+        image: PRODUCT_IMAGES.coldbrew,
+        popular: true,
+      },
+      {
+        id: "mango-smoothie",
+        name: "Манго смүүти",
+        description: "Мангоны зөөлөн, сэрүүн смүүти.",
+        basePrice: 9000,
+        image: PRODUCT_IMAGES.smoothie,
+      },
+      {
+        id: "oreo-shake",
+        name: "Oreo шейк",
+        description: "Жигнэмэг, кремтэй өтгөн шейк.",
+        basePrice: 10000,
+        image: PRODUCT_IMAGES.shake,
+        popular: true,
+      },
+      {
+        id: "iced-lemon-tea",
+        name: "Мөстэй нимбэгтэй цай",
+        description: "Нимбэг, гаатай сэрүүн цай.",
+        basePrice: 7500,
+        image: PRODUCT_IMAGES.icedTea,
+      },
+    ],
+  },
+  {
+    id: "desserts",
+    label: "Амттан",
+    description: "Бялуу, круассан, жижиг амттан.",
+    accent: "rose",
+    image: PRODUCT_IMAGES.cheesecake,
+    items: [
+      {
+        id: "blueberry-cheesecake",
+        name: "Нэрстэй чизкейк",
+        description: "Бяслагтай крем, жигнэмэгэн суурь, нэрсний амт.",
+        basePrice: 12500,
+        image: PRODUCT_IMAGES.cheesecake,
+        popular: true,
+      },
+      {
+        id: "butter-croissant",
+        name: "Цөцгийн круассан",
+        description: "Дулаахан, хөвсгөр круассан.",
+        basePrice: 7500,
+        image: PRODUCT_IMAGES.croissant,
+      },
+      {
+        id: "tiramisu-cup",
+        name: "Тирамису аяга",
+        description: "Кофены амттай зөөлөн амттан.",
+        basePrice: 9800,
+        image: PRODUCT_IMAGES.tiramisu,
+      },
+      {
+        id: "dark-brownie",
+        name: "Шоколадтай брауни",
+        description: "Өтгөн шоколадтай брауни.",
+        basePrice: 9000,
+        image: PRODUCT_IMAGES.brownie,
+      },
+    ],
+  },
+  {
+    id: "breakfast",
+    label: "Өглөөний хоол",
+    description: "Сэндвич, тост, өглөөний хөнгөн хоол.",
+    accent: "emerald",
+    image: PRODUCT_IMAGES.breakfast,
+    items: [
+      {
+        id: "chicken-panini",
+        name: "Тахиатай панини",
+        description: "Тахиа, песто, улаан лооль, бяслагтай.",
+        basePrice: 16500,
+        image: PRODUCT_IMAGES.panini,
+        popular: true,
+      },
+      {
+        id: "avocado-toast",
+        name: "Авокадо тост",
+        description: "Шаржигнуур талх, зөөлөн авокадо.",
+        basePrice: 11500,
+        image: PRODUCT_IMAGES.toast,
+      },
+      {
+        id: "english-breakfast",
+        name: "Англи өглөөний хоол",
+        description: "Өндөг, тост, өглөөний хачиртай таваг.",
+        basePrice: 14000,
+        image: PRODUCT_IMAGES.breakfast,
+      },
+      {
+        id: "egg-sandwich",
+        name: "Өндөгтэй сэндвич",
+        description: "Дулаахан талхтай өндөгний сэндвич.",
+        basePrice: 8000,
+        image: PRODUCT_IMAGES.sandwich,
+      },
+    ],
+  },
+];
+
+export const PAYMENT_METHODS = ["Бэлэн", "Карт", "QPay", "SocialPay"];
+
+export const CAFE_NOTES = [
+  "Дулаан гэрэл, намуухан хөгжим, шинэхэн кофены үнэр.",
+  "Авч явах захиалга барны дарааллаар бэлтгэгдэнэ.",
+  "10:00 цагаас хойш цонхны дэргэд суухад хамгийн тухтай.",
+];
+
+export const CATEGORY_CONFIG = Object.fromEntries(
+  MENU_CATEGORIES.map((category) => [
+    category.id,
+    {
+      label: category.label,
+      accent: category.accent,
+      badge: category.description,
+      description: category.description,
+      image: category.image,
+      supportsIce: category.id === "cold-drinks",
+      sizePrices: { S: 0, M: 2000, L: 4000 },
+    },
+  ]),
+);
+
+export const DEFAULT_MENU = Object.fromEntries(
+  MENU_CATEGORIES.map((category) => [category.id, category.items]),
+);
+
+export const HERO_IMAGE = SCENE_IMAGES.lounge;
+
+export function formatMoney(amount) {
+  return `${new Intl.NumberFormat("mn-MN").format(Math.round(amount))} ₮`;
+}
+
+export function getUnitPrice(categoryKey, item, size = "S", hasIce = false) {
   const category = CATEGORY_CONFIG[categoryKey];
-  const sizePrice = category.sizePrices[size] ?? 0;
-  const icePrice = category.supportsIce && hasIce ? 500 : 0;
+  const sizePrice = category?.sizePrices?.[size] ?? 0;
+  const icePrice = category?.supportsIce && hasIce ? 500 : 0;
   return item.basePrice + sizePrice + icePrice;
 }
 
@@ -128,13 +239,13 @@ export function getDiscount(total, date = new Date()) {
 
   if (date.getMonth() === 1 && date.getDate() === 14) {
     percent = 0.3;
-    label = "Valentine's Day";
+    label = "Валентины хямдрал";
   } else if (date.getDate() >= 29 && date.getDate() <= 31 && date.getDay() === 5) {
     percent = 0.2;
     label = "Black Friday";
   } else if (total >= 50000) {
     percent = 0.1;
-    label = "Order over 50,000";
+    label = "50,000₮-өөс дээш";
   }
 
   return {

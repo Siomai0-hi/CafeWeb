@@ -1,6 +1,7 @@
 package com.example.CafeWeb.controller;
 
 import com.example.CafeWeb.model.CafeOrder;
+import com.example.CafeWeb.model.CafeSummary;
 import com.example.CafeWeb.model.MenuItem;
 import com.example.CafeWeb.service.CafeService;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,8 @@ public class CafeController {
 	public String home(Model model) {
 		model.addAttribute("menuByCategory", cafeService.getMenuByCategory());
 		model.addAttribute("menuCount", cafeService.getMenu().size());
+		model.addAttribute("popularItems", cafeService.getPopularItems());
+		model.addAttribute("summary", cafeService.getSummary());
 		if (!model.containsAttribute("form")) {
 			model.addAttribute("form", Map.of());
 		}
@@ -55,5 +58,17 @@ public class CafeController {
 	@ResponseBody
 	public List<MenuItem> menuApi() {
 		return cafeService.getMenu();
+	}
+
+	@GetMapping("/api/menu/grouped")
+	@ResponseBody
+	public Map<String, List<MenuItem>> groupedMenuApi() {
+		return cafeService.getMenuByCategory();
+	}
+
+	@GetMapping("/api/summary")
+	@ResponseBody
+	public CafeSummary summaryApi() {
+		return cafeService.getSummary();
 	}
 }

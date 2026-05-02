@@ -1,0 +1,11 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#0b0f14"/>
+  <rect x="44" y="44" width="712" height="512" rx="32" fill="#111827"/>
+  <path d="M308 146h184l-28 280H336l-28-280Z" fill="#67e8f9" fill-opacity=".22" stroke="#a5f3fc" stroke-width="22"/>
+  <path d="M350 220h36M414 250h42M356 314h96" stroke="#ecfeff" stroke-width="18" stroke-linecap="round"/>
+  <path d="M444 132l72-72" stroke="#fb7185" stroke-width="20" stroke-linecap="round"/>
+  <path d="M300 150h204" stroke="#ecfeff" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="264" cy="418" r="34" fill="#22c55e" fill-opacity=".28"/>
+  <circle cx="536" cy="188" r="46" fill="#fb7185" fill-opacity=".25"/>
+  <text x="400" y="500" text-anchor="middle" fill="#f8fafc" font-family="Arial, sans-serif" font-size="34" font-weight="700">Cold Drink</text>
+</svg>

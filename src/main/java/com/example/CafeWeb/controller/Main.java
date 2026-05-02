@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -237,6 +239,7 @@ class Discount {
 
 class MenuFileManager {
 	private static final Path MENU_DIR = Path.of("menu-data");
+	private static final Path FEEDBACK_FILE = MENU_DIR.resolve("Feedback.txt");
 
 	static List<CafeProduct> load(Category category) {
 		Path file = MENU_DIR.resolve(category.getFileName());
@@ -277,6 +280,25 @@ class MenuFileManager {
 		}
 	}
 
+	static void appendFeedback(String customerName, String text) {
+		try {
+			Files.createDirectories(MENU_DIR);
+			try (BufferedWriter writer = Files.newBufferedWriter(
+					FEEDBACK_FILE,
+					java.nio.file.StandardOpenOption.CREATE,
+					java.nio.file.StandardOpenOption.APPEND)) {
+				writer.write(LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+				writer.write(" | ");
+				writer.write(customerName);
+				writer.write(" | ");
+				writer.write(text);
+				writer.newLine();
+			}
+		} catch (IOException ex) {
+			System.out.println("Could not save feedback to " + FEEDBACK_FILE + ".");
+		}
+	}
+
 	private static void ensureMenuFile(Path file, Category category) {
 		try {
 			Files.createDirectories(MENU_DIR);
@@ -303,6 +325,7 @@ class MenuFileManager {
 public class Main {
 	private static final Scanner SCANNER = new Scanner(System.in);
 	private static final Map<Category, List<CafeProduct>> MENU = new EnumMap<>(Category.class);
+	private static int orderSequence = 1000;
 
 	public static void main(String[] args) {
 		loadAllMenus();
@@ -347,6 +370,7 @@ public class Main {
 
 	private static void order() {
 		List<CartItem> cart = new ArrayList<>();
+		String customerName = readRequiredText("Customer name: ");
 		boolean orderMore;
 
 		do {
@@ -372,7 +396,7 @@ public class Main {
 			orderMore = readYesNo("Order more? (y/n): ");
 		} while (orderMore);
 
-		printReceipt(cart);
+		printReceipt(customerName, cart);
 	}
 
 	private static Category chooseCategory() {
@@ -392,7 +416,7 @@ public class Main {
 		}
 	}
 
-	private static void printReceipt(List<CartItem> cart) {
+	private static void printReceipt(String customerName, List<CartItem> cart) {
 		int subtotal = 0;
 
 		System.out.println("\n+---------------------------+");
@@ -408,16 +432,24 @@ public class Main {
 		String payment = choosePayment();
 		DiscountResult discount = Discount.apply(subtotal);
 		int finalTotal = subtotal - discount.amount();
+		int itemCount = cart.stream().mapToInt(CartItem::quantity).sum();
+		int waitMinutes = Math.min(30, 6 + itemCount * 2);
+		String orderId = "CW-" + (++orderSequence);
+		String orderedAt = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 
 		System.out.println("\n+-------------------+");
 		System.out.println("|      RECEIPT      |");
 		System.out.println("+-------------------+");
+		System.out.println("  Order ID: " + orderId);
+		System.out.println("  Customer: " + customerName);
 		System.out.println("  Payment: " + payment);
 		System.out.println("  Subtotal: " + formatMoney(subtotal));
 		if (discount.amount() > 0) {
 			System.out.println("  " + discount.label() + ": -" + formatMoney(discount.amount()));
 		}
 		System.out.println("  Amount due: " + formatMoney(finalTotal));
+		System.out.println("  Ordered at: " + orderedAt);
+		System.out.println("  Ready in: " + waitMinutes + " minutes");
 		System.out.println("  Thank you for your order!");
 	}
 
@@ -470,7 +502,9 @@ public class Main {
 
 	private static void feedback() {
 		System.out.println("\n--- FEEDBACK ---");
+		String customerName = readRequiredText("Your name: ");
 		String text = readRequiredText("Please enter your feedback: ");
+		MenuFileManager.appendFeedback(customerName, text);
 		System.out.println("Your feedback has been received: " + text);
 	}
 

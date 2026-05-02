@@ -25,11 +25,11 @@
 		</div>
 		<div class="intro-stats" aria-label="Cafe status">
 			<div>
-				<strong th:text="${menuCount}">8</strong>
+				<strong th:text="${summary.menuItemCount}">12</strong>
 				<span>цэс</span>
 			</div>
 			<div>
-				<strong>8-18</strong>
+				<strong th:text="${summary.averagePrepTime}">8-18 minutes</strong>
 				<span>минут</span>
 			</div>
 		</div>
@@ -98,6 +98,16 @@
 			<label>
 				<span>Тэмдэглэл</span>
 				<textarea name="note" rows="3" th:text="${form.get('note')}"></textarea>
+			</label>
+
+			<label>
+				<span>Төлбөр</span>
+				<select name="paymentMethod">
+					<option value="Cash" th:selected="${form.get('paymentMethod') == 'Cash'}">Cash</option>
+					<option value="Card" th:selected="${form.get('paymentMethod') == 'Card'}">Card</option>
+					<option value="QPay" th:selected="${form.get('paymentMethod') == 'QPay'}">QPay</option>
+					<option value="SocialPay" th:selected="${form.get('paymentMethod') == 'SocialPay'}">SocialPay</option>
+				</select>
 			</label>
 
 			<div class="total-box">

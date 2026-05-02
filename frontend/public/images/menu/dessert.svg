@@ -1,0 +1,12 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#120b0f"/>
+  <rect x="44" y="44" width="712" height="512" rx="32" fill="#24141b"/>
+  <path d="M230 356h340l-34 88H264l-34-88Z" fill="#f9a8d4"/>
+  <path d="M268 252h264l38 104H230l38-104Z" fill="#fed7aa"/>
+  <path d="M294 214h212l26 38H268l26-38Z" fill="#fef3c7"/>
+  <path d="M310 292c44 34 106 34 180 0" stroke="#7f1d1d" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="352" cy="196" r="22" fill="#fb7185"/>
+  <circle cx="418" cy="192" r="22" fill="#f59e0b"/>
+  <circle cx="482" cy="200" r="22" fill="#22c55e"/>
+  <text x="400" y="500" text-anchor="middle" fill="#fff7ed" font-family="Arial, sans-serif" font-size="34" font-weight="700">Dessert</text>
+</svg>
