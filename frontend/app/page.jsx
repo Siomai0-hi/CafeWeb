@@ -118,17 +118,15 @@ function LoginScreen({ onLogin }) {
 
         <div className="relative flex h-full flex-col justify-between p-6 sm:p-10 lg:p-14">
           <a className="w-fit text-2xl font-black text-white" href="/">
-            CafeWeb
+            MateHouse
           </a>
 
           <div className="max-w-3xl py-12">
-            <p className="mb-3 text-xs font-black uppercase text-amber-200">Улаанбаатар дахь тухтай кафе</p>
+            <p className="mb-3 text-xs font-black uppercase text-amber-200">Улаанбаатар дахь хамгийн тухтай кафе</p>
             <h1 className="max-w-2xl text-5xl font-black leading-none text-white sm:text-6xl lg:text-7xl">
-              Кофегоо хурдан сонгоод захиалаарай.
+              Аз жаргалыг аягалан баръя.
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-7 text-zinc-200 sm:text-lg">
-              Нэвтрээд цэсээ ангиллаар харж, сагсандаа нэмээд төлбөрөө сонгоно.
-            </p>
+          
           </div>
 
           <div className="grid max-w-2xl gap-3 text-sm text-zinc-200 sm:grid-cols-3">
