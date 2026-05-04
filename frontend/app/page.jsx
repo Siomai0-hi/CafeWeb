@@ -154,7 +154,6 @@ function LoginScreen({ onLogin }) {
           <div className="mb-7">
             <p className="text-sm font-semibold text-amber-200">Тавтай морил</p>
             <h2 className="mt-2 text-3xl font-black text-white">Нэвтрэх</h2>
-            <p className="mt-2 text-sm leading-6 text-zinc-400">Нэвтэрмэгц цэс шууд нээгдэнэ.</p>
           </div>
 
           <label className="mb-4 block">
@@ -194,12 +193,6 @@ function LoginScreen({ onLogin }) {
           >
             Нэвтэрч цэс нээх
           </button>
-
-          <div className="mt-5 grid grid-cols-3 gap-2 text-center text-xs font-bold text-zinc-400">
-            <span className="rounded border border-white/10 py-2">Цэс</span>
-            <span className="rounded border border-white/10 py-2">Сагс</span>
-            <span className="rounded border border-white/10 py-2">Удирдлага</span>
-          </div>
         </form>
       </section>
     </main>
