@@ -124,7 +124,7 @@ function LoginScreen({ onLogin }) {
           <div className="max-w-3xl py-12">
             <p className="mb-3 text-xs font-black uppercase text-amber-200">Улаанбаатар дахь хамгийн тухтай кафе</p>
             <h1 className="max-w-2xl text-5xl font-black leading-none text-white sm:text-6xl lg:text-7xl">
-              Аз жаргалыг аягалан баръя.
+              Аз жаргалыг аягалан барья.
             </h1>
           
           </div>
